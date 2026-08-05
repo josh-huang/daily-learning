@@ -1,8 +1,16 @@
 # Daily Learning 📋
 
-> 日拱一卒，功不唐捐。
+> 不追频率，追深度。不赌自己能记住，建系统逼自己回顾。
 
-每天记录学习内容并 Push 到 GitHub，用输出倒逼输入。
+一个面向 LLM 应用落地与后端架构的系统化学习跟踪仓库。
+
+---
+
+## 核心原则
+
+- **学到了才记** — 没有每日硬性指标。碎片放 TIL，深度主题放 Papers
+- **写完必须回头看** — Weekly Review 比写新笔记更重要
+- **手工索引** — 每篇笔记顺手更新 `INDEX.md`，30 篇之前不自动化
 
 ---
 
@@ -10,12 +18,18 @@
 
 ```
 daily-learning/
-├── til/                       # Today I Learned — 每日学习笔记
+├── til/                       # Today I Learned — 碎片知识
 │   ├── ai/                    # LLM / RAG / Agent / Prompt Engineering
 │   ├── python/                # Python 语法、最佳实践、标准库
 │   ├── devops/                # Docker / Git / CI/CD / Linux
 │   ├── sys-design/            # 系统设计 / 架构 / 分布式
-│   └── template.md            # TIL 模版（复制此文件开始新笔记）
+│   └── template.md
+│
+├── papers/                    # 深度论文笔记 — 不追求一篇一天写完
+│   └── template.md
+│
+├── weekly-review/             # 每周回顾 — 对抗遗忘曲线的唯一手段
+│   └── template.md
 │
 ├── leetcode/                  # 算法刷题
 │   ├── array/                 # 数组 / 双指针 / 前缀和
@@ -24,36 +38,55 @@ daily-learning/
 │   ├── stack-queue/           # 栈 / 队列 / 单调栈
 │   ├── sliding-window/        # 滑动窗口
 │   ├── math/                  # 数学 / 位运算
-│   └── template.md            # 题解模版
+│   └── template.md
 │
-└── scripts/                   # 辅助脚本（统计、生成目录等）
+├── INDEX.md                   # 全局索引 — 每篇写完顺手加一行
+└── scripts/                   # 辅助脚本
 ```
 
 ---
 
-## 使用方式
+## 工作流
 
-### TIL — 写一篇学习笔记
+### TIL — 一个碎片知识点
 
-1. 复制 `til/template.md` 到对应分类目录
-2. 按模版填写内容
-3. 文件名格式: `YYYY-MM-DD_主题.md`，如 `2026-08-05_attention-mechanism.md`
+学到一个值得记录的东西 → 写一篇。没学到 → 不写。
 
-### LeetCode — 刷一道题
+1. 复制 `til/template.md` → 对应分类目录
+2. 文件名: `YYYY-MM-DD_主题.md`
+3. 写完更新 `INDEX.md`
 
-1. 复制 `leetcode/template.md` 到对应分类目录
-2. 按模版填写题解
-3. 文件名格式: `编号-题名.md`，如 `1-Two-Sum.md`
+### Papers — 一篇深度论文
+
+核心：不要赶在一天内写完。理解比速度重要。
+
+1. 复制 `papers/template.md` → `papers/`
+2. 文件名: `YYYY-MM_短标题.md`
+3. "我的思考" 部分留到第二天写也不迟
+
+### LeetCode — 一道题
+
+核心：不是做出来了就完了，两周后不看答案能重写才算会。
+
+1. 复制 `leetcode/template.md` → 对应分类目录
+2. 文件名: `编号-题名.md`
+3. Weekly Review 时对着题目盲写检验
+
+### Weekly Review — 每周回顾 ⭐
+
+**这是整个系统最重要的环节。** 不写回顾 = 笔记白写。
+
+1. 复制 `weekly-review/template.md` → `weekly-review/`
+2. 文件名: `YYYY-Wxx.md`
+3. 盲区自检：不看笔记，能否独立讲出核心概念？能否重写出 LeetCode？
 
 ---
 
-## 每日流程
+## Commit 惯例
 
-```bash
-# 1. 写笔记 / 刷题
-# 2. 提交
-git add .
-git commit -m "til: 2026-08-05 - Attention Mechanism & LC 206"
-git push
-# 3. GitHub Activity 点亮 🟩
+```
+til: Attention Mechanism — Q/K/V 与 Scaled Dot-Product
+leetcode: LC 206 Reverse Linked List (iterative + recursive)
+paper: "Training Compute-Optimal LLMs" (Chinchilla)
+review: Week 33 (2026-08-04 ~ 08-10)
 ```

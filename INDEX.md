@@ -15,6 +15,7 @@
 
 | 日期 | 主题 | 文件 |
 |------|------|------|
+| 2026-08-05 | Python GIL 与并发模型：Threading vs Multiprocessing | [til/python/2026-08-05_python-gil-threading-vs-multiprocessing.md](til/python/2026-08-05_python-gil-threading-vs-multiprocessing.md) |
 
 ### DevOps
 
@@ -76,4 +77,4 @@
 
 ---
 
-*Last updated: YYYY-MM-DD*
+*Last updated: 2026-08-05*

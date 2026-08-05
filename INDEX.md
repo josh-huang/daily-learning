@@ -16,6 +16,7 @@
 | 日期 | 主题 | 文件 |
 |------|------|------|
 | 2026-08-05 | Python GIL 与并发模型：Threading vs Multiprocessing | [til/python/2026-08-05_python-gil-threading-vs-multiprocessing.md](til/python/2026-08-05_python-gil-threading-vs-multiprocessing.md) |
+| 2026-08-05 | asyncio：事件循环与协程模型 | [til/python/2026-08-05_asyncio-event-loop-coroutines.md](til/python/2026-08-05_asyncio-event-loop-coroutines.md) |
 
 ### DevOps
 

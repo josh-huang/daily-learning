@@ -10,6 +10,8 @@
 
 | 日期 | 主题 | 文件 |
 |------|------|------|
+| 2026-08-05 | 长上下文 Agent Prompt 优化：TTFT、Prefix Caching、Summary Memory | [til/ai/2026-08-05_prompt-optimization-long-context-agent.md](til/ai/2026-08-05_prompt-optimization-long-context-agent.md) |
+| 2026-08-05 | Transformer Standard Attention vs FlashAttention：I/O Aware 与 $O(N)$ 空间 | [til/ai/2026-08-05_flashattention-io-aware-exact-attention.md](til/ai/2026-08-05_flashattention-io-aware-exact-attention.md) |
 
 ### Python
 

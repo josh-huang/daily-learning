@@ -2,8 +2,8 @@ name: Nightly Check
 
 on:
   schedule:
-    # 20:00 UTC+8 (China time) = 12:00 UTC
-    - cron: "0 12 * * *"
+    # 00:00 UTC+8 (midnight China time) = 16:00 UTC
+    - cron: "0 16 * * *"
   workflow_dispatch:  # manual trigger via GitHub UI
 
 permissions:

@@ -1,0 +1,56 @@
+name: Nightly Check
+
+on:
+  schedule:
+    # 20:00 UTC+8 (China time) = 12:00 UTC
+    - cron: "0 12 * * *"
+  workflow_dispatch:  # manual trigger via GitHub UI
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run integrity check
+        id: check
+        run: python scripts/check_integrity.py
+        continue-on-error: true
+
+      - name: Create issues for findings
+        # Only run this step if not already triggered by a scheduled run
+        # (avoids duplicate issues — creates only when findings exist)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/check_integrity.py 2>/dev/null | \
+          python3 -c "
+import json, sys, subprocess
+
+data = json.load(sys.stdin)
+for issue in data['issues']:
+    title = issue['title']
+    body = issue['body']
+    labels = ','.join(issue.get('labels', []))
+
+    # Check if open issue with same title already exists
+    existing = subprocess.run(
+        ['gh', 'issue', 'list', '--state', 'open', '--search', title, '--json', 'title'],
+        capture_output=True, text=True
+    )
+    if title not in existing.stdout:
+        subprocess.run(
+            ['gh', 'issue', 'create', '--title', title, '--body', body,
+             '--label', labels]
+        )
+"

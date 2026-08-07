@@ -1,0 +1,13 @@
+面试题：在构建基于 RAG（检索增强生成）与 Agent 的系统时，如何解决“检索漂移（Retrieval Drift）”与“上下文污染（Context Contamination）”问题？
+💡 标准答案（背诵版）：
+核心策略采取 “多路召回 + 重排（Rerank） + 动态上下文蒸馏” 三层拦截架构：
+
+混合多路召回（Hybrid Search）：结合密集向量检索（Dense Vector）捕捉语义关联与稀疏检索（Sparse/BM25）精准匹配实体词，防止纯向量搜索导致的专有名词幻觉。
+
+精细化重排与门控（Reranking & Thresholding）：引入交叉编码器（Cross-Encoder Reranker）对召回片段进行二次打分，并设定相似度动态阈值，过滤无关及低置信度 Chunk。
+
+上下文摘要与滑动窗口（Context Summarization）：对多轮对话 History 采用增量式摘要（Incremental Summary）而非直接追加全文，避免无关的历史噪声污染 Prompt 导致 LLM 注意力分散。
+
+原理口诀：多路召回拓广度，重排门控控精度，历史摘要省 Token。
+
+面试题：请阐述 LLaMA 架构中 RoPE（Rotary Position Embedding，旋转位置编码）的数学原理，并说明它相比绝对位置编码（Absolute PE）与相对位置编码（Relative PE）的核心优势。💡 Standard 答案（背诵版）：数学原理（旋转复数平面）：RoPE 将二维 Query/Key 向量 $\mathbf{x} = [x_1, x_2]^T$ 看作复数平面上的点，通过乘以一个旋转矩阵 $\mathbf{R}_{\Theta, m}$（角度为 $m\theta$）：$$\mathbf{R}_{\Theta, m} = \begin{pmatrix} \cos m\theta & -\sin m\theta \\ \sin m\theta & \cos m\theta \end{pmatrix}$$高维向量则拆分为 $d/2$ 个二维子空间分别旋转。内积衰减特性：由于 $(\mathbf{R}_m \mathbf{q})^T (\mathbf{R}_n \mathbf{k}) = \mathbf{q}^T \mathbf{R}_{n-m} \mathbf{k}$，其点积结果仅取决于相对位置差 $(m-n)$，内积数值随相对距离增加而自然衰减。核心优势（对比传统 PE）：绝对位置编码（Sinusoidal/Learned）：缺乏显式的相对位置衰减关系，外推性差。相对位置编码（Bias 矩阵）：需要维护额外的 Relative Distance Bias 矩阵，增加计算开销且不利于并行。RoPE 优势：无显式参数量（利用复数旋转实现），同时具备绝对位置的绝对注入与相对位置的内积保持，且非常易于拓展长上下文（如 YaRN / Dynamic NTK 变频外推）。

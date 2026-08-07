@@ -12,10 +12,10 @@ category: ai
 
 ## 核心概念
 
-- **create_agent**：LangChain 的 Agent 工厂函数，底层使用 LangGraph 在"模型判断 → 工具执行 → 结果回传"之间循环，直到模型输出最终结果。
+- **create_react_agent**：LangGraph 的 Agent 工厂函数（`langgraph.prebuilt.create_react_agent`），在"模型判断 → 工具执行 → 结果回传"之间循环，直到模型输出最终结果。
 - **Checkpointer vs Store**：Checkpointer 按 `thread_id` 保存当前线程状态（短期、续接对话），Store 管理跨线程共享信息（长期、用户偏好/事实）。
 - **Middleware**：横切逻辑层，在模型调用和工具执行前后插入重试、摘要压缩、权限控制、人工审批，避免规则散落各节点。
-- **response_format**：通过 Pydantic BaseModel 约束 Agent 最终输出 Schema，适用于前端渲染、工单系统、工作流等后续程序消费场景。
+- **结构化输出 (Structured Output)**：在模型层通过 `.with_structured_output(PydanticModel)` 配置，Agent 最终回复自动符合 Schema 约束，适用于前端渲染、工单系统、工作流等后续程序消费场景。
 
 ## 展开
 
@@ -25,7 +25,7 @@ category: ai
 Step 1: 任务边界      → 能做什么/不能做什么/何时转人工/何谓成功
 Step 2: 模型 + Tools  → Tool 拆分为职责单一、Schema 清晰的函数
 Step 3: 行为约束      → system_prompt + response_format (Pydantic)
-Step 4: 组装          → create_agent(model, tools, prompt, format)
+Step 4: 组装          → create_react_agent(llm.with_structured_output(), tools, prompt)
 Step 5: 状态 + 安全   → Checkpointer / Store / Middleware(重试/摘要/审批)
 Step 6: 调用方式      → invoke | async | stream (匹配产品形态)
 Step 7: 测试 + 监控   → Tool 单测 → Agent 轨迹测试 → Trace 监控
@@ -62,22 +62,26 @@ class SupportReply(BaseModel):
 ### Step 4: 组装与运行
 
 ```python
-from langchain.agents import create_agent
+from langgraph.prebuilt import create_react_agent
+from langchain.chat_models import ChatOpenAI
 
-agent = create_agent(
-    model="openai:gpt-4o-mini",
+# 结构化输出在模型层配置，不在 Agent 层
+llm = ChatOpenAI(model="gpt-4o-mini").with_structured_output(SupportReply)
+
+agent = create_react_agent(
+    model=llm,
     tools=[lookup_order],
-    system_prompt=(
+    prompt=(
         "你是订单客服。回答订单状态前必须调用查询工具；"
         "不得猜测，无法处理时设置转人工。"
     ),
-    response_format=SupportReply,
 )
 
 result = agent.invoke({
     "messages": [{"role": "user", "content": "订单 A100 到哪了？"}]
 })
-reply: SupportReply = result["structured_response"]
+# 结构化结果在最后一条 AI 消息中，LangGraph state 的 messages 列表末尾
+reply: SupportReply = result["messages"][-1]
 ```
 
 ### Step 5: Middleware 横切关注点

@@ -10,6 +10,8 @@
 
 | 日期 | 主题 | 文件 |
 |------|------|------|
+| 2026-08-07 | RAG 检索漂移与上下文污染：Hybrid Search + Rerank + Summary Memory 三层拦截 | [til/ai/2026-08-07_rag-retrieval-drift-context-contamination.md](til/ai/2026-08-07_rag-retrieval-drift-context-contamination.md) |
+| 2026-08-07 | RoPE 旋转位置编码：数学原理、相对位置不变性、与 Absolute/Relative PE 对比 | [til/ai/2026-08-07_rope-rotary-position-embedding.md](til/ai/2026-08-07_rope-rotary-position-embedding.md) |
 | 2026-08-05 | 长上下文 Agent Prompt 优化：TTFT、Prefix Caching、Summary Memory | [til/ai/2026-08-05_prompt-optimization-long-context-agent.md](til/ai/2026-08-05_prompt-optimization-long-context-agent.md) |
 | 2026-08-05 | Transformer Standard Attention vs FlashAttention：I/O Aware 与 $O(N)$ 空间 | [til/ai/2026-08-05_flashattention-io-aware-exact-attention.md](til/ai/2026-08-05_flashattention-io-aware-exact-attention.md) |
 
@@ -80,4 +82,4 @@
 
 ---
 
-*Last updated: 2026-08-05*
+*Last updated: 2026-08-07*

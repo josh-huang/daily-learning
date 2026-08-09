@@ -15,6 +15,8 @@
 | 2026-08-07 | RoPE 旋转位置编码：数学原理、相对位置不变性、与 Absolute/Relative PE 对比 | [til/ai/2026-08-07_rope-rotary-position-embedding.md](til/ai/2026-08-07_rope-rotary-position-embedding.md) |
 | 2026-08-05 | 长上下文 Agent Prompt 优化：TTFT、Prefix Caching、Summary Memory | [til/ai/2026-08-05_prompt-optimization-long-context-agent.md](til/ai/2026-08-05_prompt-optimization-long-context-agent.md) |
 | 2026-08-05 | Transformer Standard Attention vs FlashAttention：I/O Aware 与 $O(N)$ 空间 | [til/ai/2026-08-05_flashattention-io-aware-exact-attention.md](til/ai/2026-08-05_flashattention-io-aware-exact-attention.md) |
+| 2026-08-09 | 高并发 RAG 系统设计与 Agent 容错：Semantic Cache + Reflexion Loop + Fallback | [til/ai/2026-08-09_rag-high-concurrency-agent-fault-tolerance.md](til/ai/2026-08-09_rag-high-concurrency-agent-fault-tolerance.md) |
+| 2026-08-09 | DeepSeek-R1/GRPO 分组相对策略优化：Critic-Free RL 对齐算法 | [til/ai/2026-08-09_deepseek-r1-grpo-vs-ppo.md](til/ai/2026-08-09_deepseek-r1-grpo-vs-ppo.md) |
 
 ### Python
 
@@ -22,6 +24,7 @@
 |------|------|------|
 | 2026-08-05 | Python GIL 与并发模型：Threading vs Multiprocessing | [til/python/2026-08-05_python-gil-threading-vs-multiprocessing.md](til/python/2026-08-05_python-gil-threading-vs-multiprocessing.md) |
 | 2026-08-05 | asyncio：事件循环与协程模型 | [til/python/2026-08-05_asyncio-event-loop-coroutines.md](til/python/2026-08-05_asyncio-event-loop-coroutines.md) |
+| 2026-08-09 | Python `__slots__` 内存优化：`__dict__` vs 固定指针数组 | [til/python/2026-08-09_python-slots-memory-optimization.md](til/python/2026-08-09_python-slots-memory-optimization.md) |
 
 ### DevOps
 
@@ -80,7 +83,8 @@
 
 | 周次 | 日期范围 | 摘要 |
 |------|----------|------|
+| W32 | 2026-08-05 ~ 08-09 | 10 TIL: FlashAttention→Agent 容错→GRPO 完整链路；零刷题需补 |
 
 ---
 
-*Last updated: 2026-08-07*
+*Last updated: 2026-08-09*

@@ -60,6 +60,7 @@ BM25:  精确匹配 "Apple", "M4", "芯片" — 无歧义
 ## 关联
 
 - [[2026-08-05_prompt-optimization-long-context-agent]] — Summary Memory 的实现延伸
+- [[2026-08-09_context-rot-mitigation]] — 上下文污染的上层治理框架（本篇是检索侧的一个切面）
 - [[2026-08-07_rope-rotary-position-embedding]] — 同日记的 RoPE 笔记
 
 ## 参考

@@ -80,6 +80,7 @@ Window Size: 128K
 
 ## 关联
 
+- [[2026-08-09_context-rot-mitigation]] — 上下文治理的完整方法论（本篇的 Summary Memory 是其中一环）
 - 后续可深入：KV Cache 的底层管理（PagedAttention / vLLM）、不同推理引擎的 Prefix Caching 实现差异
 
 ## 参考

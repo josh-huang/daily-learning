@@ -178,7 +178,7 @@ async def main():
 
 ## 关联
 
-- [[2026-08-05_python-gil-threading-vs-multiprocessing]] — 三种并发模型的选型决策
+- [[2026-08-05_gil-threading-vs-multiprocessing]] — 三种并发模型的选型决策
 - 后续可深入：`async/await` 底层实现（生成器 + `yield from` 的演化史）、`uvloop`（libuv 替代 asyncio 默认事件循环）、FastAPI 如何利用 asyncio 达到高性能
 
 ## 参考

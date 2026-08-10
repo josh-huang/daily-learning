@@ -110,7 +110,7 @@ class BadDerived(Base):
 
 ## 关联
 
-- [[2026-08-05_python-gil-threading-vs-multiprocessing]] — 同属 Python 性能优化的底层机制
+- [[2026-08-05_gil-threading-vs-multiprocessing]] — 同属 Python 性能优化的底层机制
 - 后续可深入：`dataclasses(slots=True)` (Python 3.10+)、`__slots__` 与 `@property` 的交互
 
 ## 参考

@@ -52,3 +52,29 @@
 - **寻根究底**: 严禁为了让代码通过而注释掉报错、使用 `Any` 或者是加 Bypass 标记。必须解决根本原因。
 - **安全红线**: 凭证、密钥、敏感数据绝对禁止进入代码、禁止进入 Commit、禁止进入日志。
 - **架构大改**: 涉及重大架构重构或流程变更，必须先在 `PlanMode` 产出设计方案，经我确认后方可动手编码。
+
+---
+
+# 仓库规范 (Repo Conventions)
+
+目录职责与工作流见 `README.md`，本章节只约束**硬性规则**。
+
+## 命名
+
+| 类型 | 格式 | 示例 |
+|---|---|---|
+| TIL | `YYYY-MM-DD_topic-kebab.md` | `2026-08-09_context-rot-mitigation.md` |
+| Paper | `YYYY-MM_short-title.md` | `2026-08_deepseek-r1.md` |
+| LeetCode | `NNN-problem-name.md` | `206-reverse-linked-list.md` |
+| Weekly Review | `YYYY-Wxx.md`（周次补零） | `2026-W32.md` |
+
+- `topic` 段控制在 **3-5 个词**，且**不重复所在目录名**（`til/python/` 下禁止再写 `python-` 前缀）。
+- 全部小写 kebab-case，日期与主题之间用下划线分隔，其余一律连字符。
+
+## 硬性约束
+
+1. **每篇笔记必须符合对应 `template.md`**：frontmatter（`date` / `tags` / `category`）+ TL;DR + 正文 + 参考。**严禁直接粘贴原始文本入库**。
+2. **改名必须同步更新反向链接**。笔记间用 Obsidian wikilink 互引（双方括号包裹**不含扩展名的文件名**），改名后必须全库 grep 修正，并同步 `INDEX.md` 的 markdown 链接。
+3. **写完必须更新 `INDEX.md`**。同一分类内**按日期倒序**排列。`scripts/check_integrity.py` 每晚校验漏索引与死链，不要指望它替你补。
+4. **空分类目录必须放 `.gitkeep`**，否则 git 不跟踪，clone 后目录消失与 `README.md` 声明不符。
+5. **技术断言必须可溯源**。涉及论文结论、性能数字、API 签名的内容，`## 参考` 段必须给出原始链接（arXiv / 官方文档 / 源码）；**禁止凭记忆编造 arXiv ID 或版本号**。

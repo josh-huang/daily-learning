@@ -74,6 +74,7 @@ Layer 4: 生成层 (LLM Streaming & Concurrency)
 ## 关联
 
 - [[2026-08-07_rag-retrieval-drift-context-contamination]] — Hybrid Search + Rerank 的三层拦截架构
+- [[2026-08-09_context-rot-mitigation]] — Reflexion Loop 与 State Mutation 的分工、上下文治理全景
 - [[2026-08-05_prompt-optimization-long-context-agent]] — Summary Memory 与 Sliding Window 的实现细节
 - [[2026-08-07_langchain-agent-seven-steps]] — Middleware 承接重试/摘要/权限横切逻辑
 

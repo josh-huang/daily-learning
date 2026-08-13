@@ -10,6 +10,8 @@
 
 | 日期 | 主题 | 文件 |
 |------|------|------|
+| 2026-08-13 | RAG 检索正确率四层优化：Query → Index → Retrieval → Rerank | [til/ai/2026-08-13_rag-retrieval-accuracy-four-layers.md](til/ai/2026-08-13_rag-retrieval-accuracy-four-layers.md) |
+| 2026-08-13 | Deep Agent vs Deep Research：LangGraph 架构范式与落地场景 | [til/ai/2026-08-13_deep-research-vs-deep-agent.md](til/ai/2026-08-13_deep-research-vs-deep-agent.md) |
 | 2026-08-09 | Context Rot 与 Context Engineering：上下文的垃圾回收机制 | [til/ai/2026-08-09_context-rot-mitigation.md](til/ai/2026-08-09_context-rot-mitigation.md) |
 | 2026-08-09 | DeepSeek-R1/GRPO 分组相对策略优化：Critic-Free RL 对齐算法 | [til/ai/2026-08-09_deepseek-r1-grpo-vs-ppo.md](til/ai/2026-08-09_deepseek-r1-grpo-vs-ppo.md) |
 | 2026-08-09 | 高并发 RAG 系统设计与 Agent 容错：Semantic Cache + Reflexion Loop + Fallback | [til/ai/2026-08-09_rag-high-concurrency-agent-fault-tolerance.md](til/ai/2026-08-09_rag-high-concurrency-agent-fault-tolerance.md) |
@@ -88,4 +90,4 @@
 
 ---
 
-*Last updated: 2026-08-10*
+*Last updated: 2026-08-13*

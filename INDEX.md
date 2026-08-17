@@ -10,6 +10,9 @@
 
 | 日期 | 主题 | 文件 |
 |------|------|------|
+| 2026-08-17 | MLA 多头潜在注意力：低秩联合压缩 KV Cache，显存降 93.3% | [til/ai/2026-08-17_mla-multi-head-latent-attention.md](til/ai/2026-08-17_mla-multi-head-latent-attention.md) |
+| 2026-08-17 | 张量并行（TP）vs 流水线并行（PP）：Megatron-LM MLP 列/行切分 | [til/ai/2026-08-17_tensor-pipeline-parallelism.md](til/ai/2026-08-17_tensor-pipeline-parallelism.md) |
+| 2026-08-17 | 结构化输出确定性保证：Constrained Decoding + Pydantic + 自愈降级 | [til/ai/2026-08-17_structured-output-constrained-decoding.md](til/ai/2026-08-17_structured-output-constrained-decoding.md) |
 | 2026-08-13 | RAG 检索正确率四层优化：Query → Index → Retrieval → Rerank | [til/ai/2026-08-13_rag-retrieval-accuracy-four-layers.md](til/ai/2026-08-13_rag-retrieval-accuracy-four-layers.md) |
 | 2026-08-13 | Deep Agent vs Deep Research：LangGraph 架构范式与落地场景 | [til/ai/2026-08-13_deep-research-vs-deep-agent.md](til/ai/2026-08-13_deep-research-vs-deep-agent.md) |
 | 2026-08-09 | Context Rot 与 Context Engineering：上下文的垃圾回收机制 | [til/ai/2026-08-09_context-rot-mitigation.md](til/ai/2026-08-09_context-rot-mitigation.md) |
@@ -90,4 +93,4 @@
 
 ---
 
-*Last updated: 2026-08-13*
+*Last updated: 2026-08-17*

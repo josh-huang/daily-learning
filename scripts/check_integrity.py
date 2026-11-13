@@ -147,7 +147,7 @@ def main() -> int:
     if issues:
         # Also output in GitHub Actions ::notice format
         for issue in issues:
-            print(f"::notice title={issue['title']}::{issue['body'].split(chr(10))[0]}")
+            print(f"::notice title={issue['title']}::{issue['body'].split(chr(10))[0]}", file=sys.stderr)
 
     return 0 if not issues else 1
 

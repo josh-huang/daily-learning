@@ -2,9 +2,9 @@ name: Nightly Check
 
 on:
   schedule:
-    # 00:00 UTC+8 (midnight China time) = 16:00 UTC
+    # 00:00 UTC+8 = 16:00 UTC
     - cron: "0 16 * * *"
-  workflow_dispatch:  # manual trigger via GitHub UI
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,35 +22,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Test integrity reporting
+        run: python -m unittest discover -s scripts/tests -v
+
       - name: Run integrity check
         id: check
-        run: python scripts/check_integrity.py
+        run: python scripts/check_integrity.py > integrity.json
+        # Findings produce exit 1, but the JSON report is still ready to publish.
         continue-on-error: true
 
       - name: Create issues for findings
-        # Only run this step if not already triggered by a scheduled run
-        # (avoids duplicate issues — creates only when findings exist)
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          python scripts/check_integrity.py 2>/dev/null | \
-          python3 -c "
-import json, sys, subprocess
-
-data = json.load(sys.stdin)
-for issue in data['issues']:
-    title = issue['title']
-    body = issue['body']
-    labels = ','.join(issue.get('labels', []))
-
-    # Check if open issue with same title already exists
-    existing = subprocess.run(
-        ['gh', 'issue', 'list', '--state', 'open', '--search', title, '--json', 'title'],
-        capture_output=True, text=True
-    )
-    if title not in existing.stdout:
-        subprocess.run(
-            ['gh', 'issue', 'create', '--title', title, '--body', body,
-             '--label', labels]
-        )
-"
+        run: python scripts/create_issues.py integrity.json

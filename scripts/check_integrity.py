@@ -1,4 +1,4 @@
-"""Nightly integrity check for daily-learning repo.
+"""Integrity check for daily-learning repo (run manually or via workflow_dispatch).
 
 Checks:
   1. Stale .txt files (should be .md with template)

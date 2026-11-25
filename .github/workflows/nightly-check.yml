@@ -1,9 +1,7 @@
 name: Nightly Check
 
 on:
-  schedule:
-    # 00:00 UTC+8 = 16:00 UTC
-    - cron: "0 16 * * *"
+  # Scheduled runs disabled; trigger manually from the Actions tab when needed.
   workflow_dispatch:
 
 permissions:

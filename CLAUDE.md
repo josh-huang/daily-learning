@@ -75,6 +75,6 @@
 
 1. **每篇笔记必须符合对应 `template.md`**：frontmatter（`date` / `tags` / `category`）+ TL;DR + 正文 + 参考。**严禁直接粘贴原始文本入库**。
 2. **改名必须同步更新反向链接**。笔记间用 Obsidian wikilink 互引（双方括号包裹**不含扩展名的文件名**），改名后必须全库 grep 修正，并同步 `INDEX.md` 的 markdown 链接。
-3. **写完必须更新 `INDEX.md`**。同一分类内**按日期倒序**排列。`scripts/check_integrity.py` 每晚校验漏索引与死链，不要指望它替你补。
+3. **写完必须更新 `INDEX.md`**。同一分类内**按日期倒序**排列。`scripts/check_integrity.py` 校验漏索引与死链（定时运行已停用，需在 GitHub Actions 手动触发 `Nightly Check` 或本地执行 `python scripts/check_integrity.py`），不要指望它替你补。
 4. **空分类目录必须放 `.gitkeep`**，否则 git 不跟踪，clone 后目录消失与 `README.md` 声明不符。
 5. **技术断言必须可溯源**。涉及论文结论、性能数字、API 签名的内容，`## 参考` 段必须给出原始链接（arXiv / 官方文档 / 源码）；**禁止凭记忆编造 arXiv ID 或版本号**。
